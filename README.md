@@ -1,4 +1,4 @@
-# simple-store
+# SimpleStore
 Sistema de vendas online com Spring Boot
 
 # A3 - Programação de Soluções Computacionais
