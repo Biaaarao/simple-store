@@ -40,3 +40,7 @@ Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualiz
 - RNF05: O sistema deve ser protegido com autenticação (Spring Security).
 - RNF06: Interface gráfica utilizando o Figma
 - RNF07:  O sistema deve seguir arquitetura em camadas (Controller, Service, Repository, Model)
+
+### Diagrama Visual de ER
+![image](https://github.com/user-attachments/assets/d628bec9-d04f-4dbc-9ed1-a5bfd53e1762)
+
