@@ -11,7 +11,7 @@ Bruno Stramasso - 824150726
 
 ## 1. **Escopo do Projeto**
 
-**Nome do Projeto**: *SimpleStore – Sistema de Vendas Online*
+**Nome do Projeto**: SimpleStore – Sistema de Vendas Online
 
 **Descrição**:
 
