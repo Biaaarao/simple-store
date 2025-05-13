@@ -14,9 +14,10 @@ Bruno Stramasso - 824150726
 **Descrição**:
 Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualizar produtos e realizar pedidos. Um administrador poderá cadastrar/editar produtos e visualizar um dashboard de métricas de vendas.
 
----
+
 
 2. **Levantamento de Requisitos**
+   
 Requisitos Funcionais
 
 - RF01: O sistema deve permitir cadastro e login de usuários com autenticação.
@@ -37,71 +38,110 @@ Requisitos Não Funcionais
 - RNF06: Interface gráfica utilizando o Figma
 - RNF07:  O sistema deve seguir arquitetura em camadas (Controller, Service, Repository, Model)
 
---
 
 3. **Diagrama Visual de ER**
 ![image](https://github.com/user-attachments/assets/d628bec9-d04f-4dbc-9ed1-a5bfd53e1762)
 
 3.1 **Modelagem Inicial do Banco de Dados**
+
 Aqui está um modelo ER simplificado das principais entidades:
 
 -USUARIO (id, nome, email, senha, perfil)
+
 -CATEGORIA (id, nome, descricao)
+
 -PRODUTO (id, nome, descricao, preco, estoque, id_categoria)
+
 -PEDIDO (id, id_usuario, data, status, total)
+
 -ITEM_PEDIDO (id, id_pedido, id_produto, quantidade, preco_unitario)
 
+
 Principais Relações:
+
 -Um USUARIO pode fazer vários PEDIDOS (1:N).
+
 -Um PEDIDO tem vários ITEM_PEDIDO, e cada item está ligado a um PRODUTO (N:N com tabela associativa).
+
 -Um PRODUTO pertence a uma CATEGORIA (N:1).
 
 3.2  **Modelagem Inicial do Banco de Dados**
+
 Entidades Principais:
 
 USUARIO
+
 -id: Long (PK)
+
 -nome: String
+
 -email: String (único)
+
 -senha: String
+
 -perfil: Enum (ADMIN ou CLIENTE)
 
 CATEGORIA
+
 -id: Long (PK)
+
 -nome: String
+
 -descricao: String
 
 PRODUTO
+
 -id: Long (PK)
+
 -nome: String
+
 -descricao: String
+
 -preco: BigDecimal
+
 -estoque: Integer
+
 -id_categoria: FK para CATEGORIA
 
 PEDIDO
+
 -id: Long (PK)
+
 -id_usuario: FK para USUARIO
+
 -data: DateTime
+
 -status: Enum (NOVO, PAGO, ENVIADO, ENTREGUE)
+
 -total: BigDecimal
 
 ITEM_PEDIDO
+
 -id: Long (PK)
+
 -id_pedido: FK para PEDIDO
+
 -id_produto: FK para PRODUTO
+
 -quantidade: Integer
+
 -preco_unitario: BigDecimal
 
+
 Relacionamentos:
+
 -USUARIO (1) ↔ (N) PEDIDO
+
 -CATEGORIA (1) ↔ (N) PRODUTO
+
 -PEDIDO (1) ↔ (N) ITEM_PEDIDO
+
 -PRODUTO (1) ↔ (N) ITEM_PEDIDO
 
 --
 
 O que cada parte representa:
+
 Entidade (Tabela) Significado
 
 -usuario: Armazena os dados dos usuários (clientes ou admins)
@@ -118,6 +158,9 @@ Entidade (Tabela) Significado
 
 E os relacionamentos?
 Um usuario pode fazer vários pedidos.
+
 Um pedido pode conter vários produtos (via item_pedido).
+
 Um produto pertence a uma categoria.
+
 Um item_pedido liga um produto a um pedido (relação muitos-para-muitos entre produtos e pedidos).
