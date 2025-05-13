@@ -9,7 +9,7 @@ Beatriz Melo - 822133279
 Bruno Stramasso - 824150726
 
 1. **Escopo do Projeto**
-**Nome do Projeto**: SimpleStore – Sistema de Vendas Online
+*Nome do Projeto*: SimpleStore – Sistema de Vendas Online
 
 **Descrição**:
 Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualizar produtos e realizar pedidos. Um administrador poderá cadastrar/editar produtos e visualizar um dashboard de métricas de vendas.
