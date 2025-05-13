@@ -1,4 +1,4 @@
-SimpleStore
+**SimpleStore**
 
 Sistema de vendas online com Spring Boot
 
@@ -20,7 +20,7 @@ Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualiz
 
 2. **Levantamento de Requisitos**
    
-Requisitos Funcionais
+**Requisitos Funcionais**
 
 - RF01: O sistema deve permitir cadastro e login de usuários com autenticação.
 - RF02: O cliente pode visualizar produtos, categorias e fazer pedidos.
@@ -30,7 +30,7 @@ Requisitos Funcionais
 - RF06: O administrador pode ver o histórico e detalhes de todos os pedidos.
 - RF07: O sistema deve gerar e armazenar os pedidos com múltiplos itens.
 
-Requisitos Não Funcionais
+**Requisitos Não Funcionais**
 
 - RNF01: O sistema deve usar Spring Boot como backend.
 - RNF02: O banco de dados deve ser relacional (MySQL ).
@@ -59,7 +59,7 @@ Aqui está um modelo ER simplificado das principais entidades:
 -ITEM_PEDIDO (id, id_pedido, id_produto, quantidade, preco_unitario)
 
 
-Principais Relações:
+**Principais Relações:**
 
 -Um USUARIO pode fazer vários PEDIDOS (1:N).
 
@@ -69,9 +69,9 @@ Principais Relações:
 
 3.2  **Modelagem Inicial do Banco de Dados**
 
-Entidades Principais:
+**Entidades Principais:**
 
-USUARIO
+**USUARIO**
 
 -id: Long (PK)
 
@@ -83,7 +83,7 @@ USUARIO
 
 -perfil: Enum (ADMIN ou CLIENTE)
 
-CATEGORIA
+**CATEGORIA**
 
 -id: Long (PK)
 
@@ -91,7 +91,7 @@ CATEGORIA
 
 -descricao: String
 
-PRODUTO
+**PRODUTO**
 
 -id: Long (PK)
 
@@ -105,7 +105,7 @@ PRODUTO
 
 -id_categoria: FK para CATEGORIA
 
-PEDIDO
+**PEDIDO**
 
 -id: Long (PK)
 
@@ -117,7 +117,7 @@ PEDIDO
 
 -total: BigDecimal
 
-ITEM_PEDIDO
+**ITEM_PEDIDO**
 
 -id: Long (PK)
 
@@ -130,7 +130,7 @@ ITEM_PEDIDO
 -preco_unitario: BigDecimal
 
 
-Relacionamentos:
+**Relacionamentos:**
 
 -USUARIO (1) ↔ (N) PEDIDO
 
@@ -140,9 +140,9 @@ Relacionamentos:
 
 -PRODUTO (1) ↔ (N) ITEM_PEDIDO
 
---
 
-O que cada parte representa:
+
+**O que cada parte representa:**
 
 Entidade (Tabela) Significado
 
@@ -156,9 +156,9 @@ Entidade (Tabela) Significado
 
 -item_pedido: Cada linha de um pedido: produto, quantidade e preço unitário
 
---
 
-E os relacionamentos?
+
+**E os relacionamentos?**
 Um usuario pode fazer vários pedidos.
 
 Um pedido pode conter vários produtos (via item_pedido).
