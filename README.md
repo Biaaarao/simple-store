@@ -35,9 +35,10 @@ Requisitos Não Funcionais
 - RNF06: Interface gráfica utilizando o Figma
 - RNF07:  O sistema deve seguir arquitetura em camadas (Controller, Service, Repository, Model)
 
+--
+
 3. **Diagrama Visual de ER**
 ![image](https://github.com/user-attachments/assets/d628bec9-d04f-4dbc-9ed1-a5bfd53e1762)
-
 
 3.1 **Modelagem Inicial do Banco de Dados**
 Aqui está um modelo ER simplificado das principais entidades:
