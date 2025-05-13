@@ -1,168 +1,135 @@
-**SimpleStore**
+# SimpleStore
 
-Sistema de vendas online com Spring Boot
+**Sistema de vendas online com Spring Boot**
 
 A3 - Programação de Soluções Computacionais
 
-**Integrantes:**
+---
 
-Beatriz Melo - 822133279
+## Badges
 
-Bruno Stramasso - 824150726
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/seu-usuario/seu-repo/actions)  
+[![Language](https://img.shields.io/badge/language-Java-blue)](https://www.java.com)  
+[![License](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
-1. **Escopo do Projeto**
-*Nome do Projeto*: SimpleStore – Sistema de Vendas Online
+---
 
-**Descrição**:
-Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualizar produtos e realizar pedidos. Um administrador poderá cadastrar/editar produtos e visualizar um dashboard de métricas de vendas.
+## Integrantes
 
+- **Beatriz Melo** – 822133279  
+- **Bruno Stramasso** – 824150726
 
+---
 
-2. **Levantamento de Requisitos**
-   
-**Requisitos Funcionais**
+## 1. Escopo do Projeto
 
-- RF01: O sistema deve permitir cadastro e login de usuários com autenticação.
-- RF02: O cliente pode visualizar produtos, categorias e fazer pedidos.
-- RF03: O administrador pode realizar CRUD de produtos, categorias e visualizar os pedidos.
-- RF04: O sistema deve gerar um dashboard com métricas (admin).
-- RF05: O cliente pode ver seus pedidos e detalhes (cliente).
-- RF06: O administrador pode ver o histórico e detalhes de todos os pedidos.
-- RF07: O sistema deve gerar e armazenar os pedidos com múltiplos itens.
+**Nome do Projeto**: *SimpleStore – Sistema de Vendas Online*
 
-**Requisitos Não Funcionais**
+### Descrição
 
-- RNF01: O sistema deve usar Spring Boot como backend.
-- RNF02: O banco de dados deve ser relacional (MySQL ).
-- RNF03: O frontend deve se comunicar com a API RESTful.
-- RNF04: O código-fonte será versionado no GitHub.
-- RNF05: O sistema deve ser protegido com autenticação (Spring Security).
-- RNF06: Interface gráfica utilizando o Figma
-- RNF07:  O sistema deve seguir arquitetura em camadas (Controller, Service, Repository, Model)
+Um sistema web simples de e-commerce onde usuários podem se cadastrar, visualizar produtos e realizar pedidos.  
+Um administrador poderá cadastrar/editar produtos e visualizar um dashboard com métricas de vendas.
 
+---
 
-3. **Diagrama Visual de ER**
-![image](https://github.com/user-attachments/assets/d628bec9-d04f-4dbc-9ed1-a5bfd53e1762)
+## 2. Levantamento de Requisitos
 
-3.1 **Modelagem Inicial do Banco de Dados**
+### Requisitos Funcionais
 
-Aqui está um modelo ER simplificado das principais entidades:
+- **RF01:** Cadastro e login de usuários com autenticação.
+- **RF02:** Visualização de produtos, categorias e realização de pedidos pelo cliente.
+- **RF03:** CRUD de produtos e categorias pelo administrador.
+- **RF04:** Dashboard com métricas para o administrador.
+- **RF05:** Histórico de pedidos e detalhes disponíveis para o cliente.
+- **RF06:** Histórico completo de pedidos visível para o administrador.
+- **RF07:** Pedidos com múltiplos itens devem ser armazenados corretamente.
 
--USUARIO (id, nome, email, senha, perfil)
+### Requisitos Não Funcionais
 
--CATEGORIA (id, nome, descricao)
+- **RNF01:** Backend com Spring Boot.
+- **RNF02:** Banco de dados relacional (MySQL).
+- **RNF03:** Frontend comunica com backend via API RESTful.
+- **RNF04:** Código-fonte versionado no GitHub.
+- **RNF05:** Autenticação utilizando Spring Security.
+- **RNF06:** Interface desenhada com Figma.
+- **RNF07:** Arquitetura em camadas (Controller, Service, Repository, Model).
 
--PRODUTO (id, nome, descricao, preco, estoque, id_categoria)
+---
 
--PEDIDO (id, id_usuario, data, status, total)
+## 3. Modelagem de Dados
 
--ITEM_PEDIDO (id, id_pedido, id_produto, quantidade, preco_unitario)
+### Diagrama ER
 
+![Diagrama ER](https://github.com/user-attachments/assets/d628bec9-d04f-4dbc-9ed1-a5bfd53e1762)
 
-**Principais Relações:**
+---
 
--Um USUARIO pode fazer vários PEDIDOS (1:N).
+### Modelagem Inicial do Banco de Dados
 
--Um PEDIDO tem vários ITEM_PEDIDO, e cada item está ligado a um PRODUTO (N:N com tabela associativa).
+#### Entidades e Atributos
 
--Um PRODUTO pertence a uma CATEGORIA (N:1).
+##### USUARIO
+- `id`: Long (PK)  
+- `nome`: String  
+- `email`: String (único)  
+- `senha`: String  
+- `perfil`: Enum (ADMIN ou CLIENTE)
 
-3.2  **Modelagem Inicial do Banco de Dados**
+##### CATEGORIA
+- `id`: Long (PK)  
+- `nome`: String  
+- `descricao`: String
 
-**Entidades Principais:**
+##### PRODUTO
+- `id`: Long (PK)  
+- `nome`: String  
+- `descricao`: String  
+- `preco`: BigDecimal  
+- `estoque`: Integer  
+- `id_categoria`: FK → CATEGORIA
 
-**USUARIO**
+##### PEDIDO
+- `id`: Long (PK)  
+- `id_usuario`: FK → USUARIO  
+- `data`: DateTime  
+- `status`: Enum (NOVO, PAGO, ENVIADO, ENTREGUE)  
+- `total`: BigDecimal
 
--id: Long (PK)
+##### ITEM_PEDIDO
+- `id`: Long (PK)  
+- `id_pedido`: FK → PEDIDO  
+- `id_produto`: FK → PRODUTO  
+- `quantidade`: Integer  
+- `preco_unitario`: BigDecimal
 
--nome: String
+---
 
--email: String (único)
+### Principais Relacionamentos
 
--senha: String
+- **USUARIO (1) ↔ (N) PEDIDO**  
+- **CATEGORIA (1) ↔ (N) PRODUTO**  
+- **PEDIDO (1) ↔ (N) ITEM_PEDIDO**  
+- **PRODUTO (1) ↔ (N) ITEM_PEDIDO**
 
--perfil: Enum (ADMIN ou CLIENTE)
+---
 
-**CATEGORIA**
+## Explicação das Entidades
 
--id: Long (PK)
+| Entidade       | Finalidade                                                                 |
+|----------------|---------------------------------------------------------------------------|
+| `usuario`      | Armazena os dados dos usuários (clientes ou admins).                      |
+| `categoria`    | Organiza os produtos por tipo (ex: Cosméticos, Eletrônicos).              |
+| `produto`      | Armazena os dados dos produtos (nome, preço, estoque, categoria).         |
+| `pedido`       | Representa uma compra feita por um usuário.                               |
+| `item_pedido`  | Detalha cada produto comprado em um pedido: quantidade e preço unitário.  |
 
--nome: String
+---
 
--descricao: String
+## Relacionamentos Explicados
 
-**PRODUTO**
+- Um **usuário** pode fazer vários **pedidos**.
+- Um **pedido** pode conter vários **produtos** via `item_pedido`.
+- Um **produto** pertence a uma única **categoria**.
+- Um **item_pedido** liga um **produto** a um **pedido** (relação N:N com tabela associativa).
 
--id: Long (PK)
-
--nome: String
-
--descricao: String
-
--preco: BigDecimal
-
--estoque: Integer
-
--id_categoria: FK para CATEGORIA
-
-**PEDIDO**
-
--id: Long (PK)
-
--id_usuario: FK para USUARIO
-
--data: DateTime
-
--status: Enum (NOVO, PAGO, ENVIADO, ENTREGUE)
-
--total: BigDecimal
-
-**ITEM_PEDIDO**
-
--id: Long (PK)
-
--id_pedido: FK para PEDIDO
-
--id_produto: FK para PRODUTO
-
--quantidade: Integer
-
--preco_unitario: BigDecimal
-
-
-**Relacionamentos:**
-
--USUARIO (1) ↔ (N) PEDIDO
-
--CATEGORIA (1) ↔ (N) PRODUTO
-
--PEDIDO (1) ↔ (N) ITEM_PEDIDO
-
--PRODUTO (1) ↔ (N) ITEM_PEDIDO
-
-
-
-**O que cada parte representa:**
-
-Entidade (Tabela) Significado
-
--usuario: Armazena os dados dos usuários (clientes ou admins)
-
--categoria: Organiza os produtos por tipo (Ex: cosmeticos, Eletrônicos)
-
--produto: Armazena os dados dos produtos (nome, preço, estoque, categoria)
-
--pedido: Representa uma compra feita por um usuário
-
--item_pedido: Cada linha de um pedido: produto, quantidade e preço unitário
-
-
-
-**E os relacionamentos?**
-Um usuario pode fazer vários pedidos.
-
-Um pedido pode conter vários produtos (via item_pedido).
-
-Um produto pertence a uma categoria.
-
-Um item_pedido liga um produto a um pedido (relação muitos-para-muitos entre produtos e pedidos).
+---
