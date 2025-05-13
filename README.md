@@ -148,7 +148,7 @@ Entidade (Tabela) Significado
 
 -usuario: Armazena os dados dos usuários (clientes ou admins)
 
--categoria: Organiza os produtos por tipo (Ex: Roupas, Eletrônicos)
+-categoria: Organiza os produtos por tipo (Ex: cosmeticos, Eletrônicos)
 
 -produto: Armazena os dados dos produtos (nome, preço, estoque, categoria)
 
