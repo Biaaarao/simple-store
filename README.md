@@ -47,7 +47,7 @@ Um administrador poderá cadastrar/editar produtos e visualizar um dashboard com
 ### Requisitos Não Funcionais
 
 - **RNF01:** Backend com Spring Boot.
-- **RNF02:** Banco de dados relacional (MySQL).
+- **RNF02:** Banco de dados relacional (SQL).
 - **RNF03:** Frontend comunica com backend via API RESTful.
 - **RNF04:** Código-fonte versionado no GitHub.
 - **RNF05:** Autenticação utilizando Spring Security.
