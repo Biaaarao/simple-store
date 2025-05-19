@@ -1,40 +1,43 @@
 -- ===============================
--- InserÁ„o de dados na tabela Usuario 
+-- Inser√ß√£o de dados na tabela Usuario 
 -- ===============================
+USE SimpleStore;
+GO
+
 INSERT INTO Usuario (nome, email, senha, perfil) VALUES
-('Jo„o Silva', 'joao@email.com', '123senha', 'cliente'),
+('Jo√£o Silva', 'joao@email.com', '123senha', 'cliente'),
 ('Maria Oliveira', 'maria@email.com', 'senha123', 'cliente'),
 ('Carlos Souza', 'carlos@email.com', 'abc123', 'admin'),
 ('Ana Costa', 'ana@email.com', 'pass456', 'cliente'),
 ('Fernanda Lima', 'fernanda@email.com', 'limaf123', 'cliente'),
 ('Ricardo Alves', 'ricardo@email.com', 'alves456', 'admin'),
-('PatrÌcia Mendes', 'patricia@email.com', 'patmendes', 'cliente'),
+('Patr√≠cia Mendes', 'patricia@email.com', 'patmendes', 'cliente'),
 ('Bruno Rocha', 'bruno@email.com', 'rochabr', 'cliente'),
 ('Sandra Martins', 'sandra@email.com', 'martins2025', 'cliente'),
 ('Luiz Fernando', 'luiz@email.com', 'luizf789', 'cliente');
 
 -- ===============================
--- InserÁ„o de dados na tabela Categoria 
+-- Inser√ß√£o de dados na tabela Categoria 
 -- ===============================
 INSERT INTO Categoria (nome, descricao) VALUES
 ('Maquiagem', 'Produtos para maquiagem facial e dos olhos'),
-('Perfume', 'Fragr‚ncias e perfumes importados e nacionais');
+('Perfume', 'Fragr√¢ncias e perfumes importados e nacionais');
 
 -- ===============================
--- InserÁ„o de dados na tabela Produto 
+-- Inser√ß√£o de dados na tabela Produto 
 -- ===============================
 INSERT INTO Produto (nome, descricao, preco, estoque, id_categoria) VALUES
 ('Blush Compacto', 'Blush compacto para todos os tipos de pele', 49.90, 100, 1),
-('Contorno Cremoso', 'Contorno facial cremoso de alta fixaÁ„o', 39.90, 80, 1),
-('RÌmel Volume', 'M·scara para cÌlios com efeito volume', 29.90, 120, 1),
-('Batom LÌquido', 'Batom lÌquido de alta cobertura', 34.90, 150, 1),
+('Contorno Cremoso', 'Contorno facial cremoso de alta fixa√ß√£o', 39.90, 80, 1),
+('R√≠mel Volume', 'M√°scara para c√≠lios com efeito volume', 29.90, 120, 1),
+('Batom L√≠quido', 'Batom l√≠quido de alta cobertura', 34.90, 150, 1),
 ('212 VIP', 'Perfume 212 VIP Eau de Parfum', 499.00, 50, 2),
-('Azzaro Pour Homme', 'Perfume masculino cl·ssico', 389.00, 40, 2),
+('Azzaro Pour Homme', 'Perfume masculino cl√°ssico', 389.00, 40, 2),
 ('Miss Dior', 'Perfume Miss Dior Eau de Toilette', 599.00, 30, 2),
 ('Prada Candy', 'Perfume Prada Candy Eau de Parfum', 549.00, 25, 2);
 
 -- ===============================
--- InserÁ„o de dados na tabela Pedido 
+-- Inser√ß√£o de dados na tabela Pedido 
 -- ===============================
 INSERT INTO Pedido (id_usuario, data, status, total) VALUES
 (1, GETDATE(), 'pendente', 499.00),
@@ -49,7 +52,7 @@ INSERT INTO Pedido (id_usuario, data, status, total) VALUES
 (10, GETDATE(), 'concluido', 64.80);
 
 -- ===============================
--- InserÁ„o de dados na tabela Item_Pedido 
+-- Inser√ß√£o de dados na tabela Item_Pedido 
 -- ===============================
 INSERT INTO Item_Pedido (id_pedido, id_produto, quantidade, preco_unitario) VALUES
 (1, 5, 1, 499.00),    -- 212 VIP
@@ -57,11 +60,11 @@ INSERT INTO Item_Pedido (id_pedido, id_produto, quantidade, preco_unitario) VALU
 (2, 4, 1, 34.90),     -- Batom
 (3, 7, 1, 599.00),    -- Miss Dior
 (4, 2, 2, 39.90),     -- Contorno
-(4, 3, 1, 29.90),     -- RÌmel
+(4, 3, 1, 29.90),     -- R√≠mel
 (5, 8, 1, 549.00),    -- Prada Candy
 (6, 4, 2, 34.90),     -- Batom
 (7, 6, 1, 389.00),    -- Azzaro
-(8, 3, 2, 29.90),     -- RÌmel
+(8, 3, 2, 29.90),     -- R√≠mel
 (9, 5, 1, 499.00),    -- 212 VIP
 (10, 2, 1, 39.90),    -- Contorno
 (10, 1, 1, 24.90);    -- Blush 
